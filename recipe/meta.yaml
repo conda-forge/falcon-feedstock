@@ -1,5 +1,5 @@
-{% set version = "1.0.0" %}
-{% set sha256 = "18532f28d92e8a3b3097285a986c8bc2ec4573efcd965c85c3fe433b37e65dc4" %}
+{% set version = "1.1.0" %}
+{% set sha256 = "1f728081e6a71991a239d44f2013b52377e8ffbc470771f23695867af2702149" %}
 
 package:
     name: falcon
@@ -13,6 +13,9 @@ source:
 build:
     number: 0
     script: python setup.py install --single-version-externally-managed --record record.txt
+    entry_points:
+      - falcon-bench = falcon.cmd.bench:main
+      - falcon-print-routes = falcon.cmd.print_routes:main
 
 requirements:
     build:
@@ -20,11 +23,12 @@ requirements:
         - setuptools
         - cython
         - six >=1.4.0
-        - python-mimeparse
+        - python-mimeparse >=1.5.2
+        - pytest-runner
     run:
         - python
         - six >=1.4.0
-        - python-mimeparse
+        - python-mimeparse >=1.5.2
 
 test:
     imports:
@@ -33,6 +37,10 @@ test:
         - falcon.routing
         - falcon.testing
         - falcon.util
+
+    commands:
+        - falcon-bench -h
+        - falcon-print-routes -h
 
 about:
     home: http://falconframework.org
