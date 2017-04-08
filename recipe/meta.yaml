@@ -11,7 +11,7 @@ source:
     sha256: {{ sha256 }}
 
 build:
-    number: 0
+    number: 1
     script: python setup.py install --single-version-externally-managed --record record.txt
     entry_points:
       - falcon-bench = falcon.cmd.bench:main
@@ -44,7 +44,8 @@ test:
 
 about:
     home: http://falconframework.org
-    license: Apache Software License
+    license: Apache-2.0
+    license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
     summary: 'An unladen web framework for building APIs and app backends.'
     description: |
         Falcon is a high-performance Python framework for building cloud APIs. It
