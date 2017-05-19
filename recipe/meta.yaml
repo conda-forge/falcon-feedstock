@@ -1,5 +1,5 @@
-{% set version = "1.1.0" %}
-{% set sha256 = "1f728081e6a71991a239d44f2013b52377e8ffbc470771f23695867af2702149" %}
+{% set version = "1.2.0" %}
+{% set sha256 = "54dccf425b8805e38c36713f8c1e98cd2e81b68ef838696c2dce900affe894c7" %}
 
 package:
     name: falcon
@@ -11,7 +11,7 @@ source:
     sha256: {{ sha256 }}
 
 build:
-    number: 1
+    number: 0
     script: python setup.py install --single-version-externally-managed --record record.txt
     entry_points:
       - falcon-bench = falcon.cmd.bench:main
@@ -22,9 +22,6 @@ requirements:
         - python
         - setuptools
         - cython
-        - six >=1.4.0
-        - python-mimeparse >=1.5.2
-        - pytest-runner
     run:
         - python
         - six >=1.4.0
@@ -45,7 +42,7 @@ test:
 about:
     home: http://falconframework.org
     license: Apache-2.0
-    license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
+    license_file: LICENSE
     summary: 'An unladen web framework for building APIs and app backends.'
     description: |
         Falcon is a high-performance Python framework for building cloud APIs. It
