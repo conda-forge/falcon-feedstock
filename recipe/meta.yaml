@@ -1,5 +1,5 @@
 {% set version = "1.2.0" %}
-{% set sha256 = "53bb5119d2513613eef6868c829ad47606615ff619590e05f7068a955867173d" %}
+{% set sha256 = "54dccf425b8805e38c36713f8c1e98cd2e81b68ef838696c2dce900affe894c7" %}
 
 package:
     name: falcon
@@ -22,9 +22,6 @@ requirements:
         - python
         - setuptools
         - cython
-        - six >=1.4.0
-        - python-mimeparse >=1.5.2
-        - pytest-runner
     run:
         - python
         - six >=1.4.0
