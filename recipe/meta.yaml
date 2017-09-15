@@ -1,5 +1,5 @@
-{% set version = "1.2.0" %}
-{% set sha256 = "54dccf425b8805e38c36713f8c1e98cd2e81b68ef838696c2dce900affe894c7" %}
+{% set version = "1.3.0" %}
+{% set sha256 = "1917c39a8f2f5ca6998141d88c8547113a7a9bbd0f00785cc8152e8c593cf44b" %}
 
 package:
     name: falcon
@@ -31,6 +31,7 @@ test:
     imports:
         - falcon
         - falcon.cmd
+        - falcon.media
         - falcon.routing
         - falcon.testing
         - falcon.util
