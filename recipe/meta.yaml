@@ -3,7 +3,9 @@
 
 package:
     name: falcon
-    version: {{ version }}
+    # version: {{ version }}
+    # Conda does not allow a dash in the version
+    version: 1.4.1.post1
 
 source:
     fn: falcon-{{ version }}.tar.gz
@@ -12,7 +14,7 @@ source:
 
 build:
     number: 0
-    script: python setup.py install --single-version-externally-managed --record record.txt
+    script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
     entry_points:
       - falcon-bench = falcon.cmd.bench:main
       - falcon-print-routes = falcon.cmd.print_routes:main
@@ -22,6 +24,7 @@ requirements:
         - {{ compiler('c') }}
     host:
         - python
+        - pip
         - setuptools
         - cython
     run:
