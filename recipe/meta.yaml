@@ -1,5 +1,5 @@
-{% set version = "1.4.1" %}
-{% set sha256 = "1c3185a131977bcb9f6d53a5f90a2462f040cd16152aaefd2f70e0e43979209a" %}
+{% set version = "1.4.1.post-1" %}
+{% set sha256 = "033982873936542a2fac7c74242bc1f80411611079b1a998d7f66f8a3c9945dc" %}
 
 package:
     name: falcon
@@ -11,7 +11,7 @@ source:
     sha256: {{ sha256 }}
 
 build:
-    number: 1
+    number: 0
     script: python setup.py install --single-version-externally-managed --record record.txt
     entry_points:
       - falcon-bench = falcon.cmd.bench:main
