@@ -13,7 +13,7 @@ source:
     sha256: {{ sha256 }}
 
 build:
-    number: 0
+    number: 1000
     script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
     entry_points:
       - falcon-bench = falcon.cmd.bench:main
@@ -61,3 +61,4 @@ extra:
     recipe-maintainers:
         - daf
         - synapticarbors
+        - carlodri
