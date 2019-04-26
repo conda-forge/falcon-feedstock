@@ -1,11 +1,11 @@
-{% set version = "1.4.1.post-1" %}
-{% set sha256 = "033982873936542a2fac7c74242bc1f80411611079b1a998d7f66f8a3c9945dc" %}
+{% set version = "2.0.0" %}
+{% set sha256 = "4cdd99706061967bdcd756fe5f474915fedb5ddf4be16fbd25d8456ededa1e9d" %}
 
 package:
     name: falcon
     # version: {{ version }}
     # Conda does not allow a dash in the version
-    version: 1.4.1.post1
+    version: "2.0.0"
 
 source:
     fn: falcon-{{ version }}.tar.gz
@@ -13,7 +13,7 @@ source:
     sha256: {{ sha256 }}
 
 build:
-    number: 1000
+    number: 0
     script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
     entry_points:
       - falcon-bench = falcon.cmd.bench:main
