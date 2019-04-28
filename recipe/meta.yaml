@@ -1,20 +1,16 @@
 {% set version = "2.0.0" %}
-{% set sha256 = "4cdd99706061967bdcd756fe5f474915fedb5ddf4be16fbd25d8456ededa1e9d" %}
 
 package:
     name: falcon
-    # version: {{ version }}
-    # Conda does not allow a dash in the version
-    version: "2.0.0"
+    version: {{ version }}
 
 source:
-    fn: falcon-{{ version }}.tar.gz
-    url: https://github.com/falconry/falcon/archive/{{ version }}.tar.gz
-    sha256: {{ sha256 }}
+    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+    sha256: eea593cf466b9c126ce667f6d30503624ef24459f118c75594a69353b6c3d5fc
 
 build:
-    number: 0
-    script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+    number: 1
+    script: "{{ PYTHON }} -m pip install . --no-deps -vv"
     entry_points:
       - falcon-bench = falcon.cmd.bench:main
       - falcon-print-routes = falcon.cmd.print_routes:main
@@ -25,12 +21,9 @@ requirements:
     host:
         - python
         - pip
-        - setuptools
         - cython
     run:
         - python
-        - six >=1.4.0
-        - python-mimeparse >=1.5.2
 
 test:
     imports:
@@ -40,7 +33,6 @@ test:
         - falcon.routing
         - falcon.testing
         - falcon.util
-
     commands:
         - falcon-bench -h
         - falcon-print-routes -h
