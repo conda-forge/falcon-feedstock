@@ -24,6 +24,8 @@ requirements:
         - cython
     run:
         - python
+        - six >=1.4.0
+        - python-mimeparse >=1.5.2
 
 test:
     imports:
