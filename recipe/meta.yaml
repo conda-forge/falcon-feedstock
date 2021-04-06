@@ -1,57 +1,61 @@
 {% set name = "falcon" %}
-{% set version = "2.0.0" %}
+{% set version = "3.0.0" %}
 
 package:
-    name: {{ name }}
-    version: {{ version }}
+  name: {{ name }}
+  version: {{ version }}
 
 source:
-    url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: eea593cf466b9c126ce667f6d30503624ef24459f118c75594a69353b6c3d5fc
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 8d7c3d52ae4590ddfa0b3d9c75d44ab573340a5e78d72ee687712e757ac53929
 
 build:
-    number: 4
-    script: "{{ PYTHON }} -m pip install . --no-deps -vv"
-    entry_points:
-      - falcon-bench = falcon.cmd.bench:main
-      - falcon-print-routes = falcon.cmd.print_routes:main
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  entry_points:
+    - falcon-bench = falcon.cmd.bench:main
+    - falcon-print-routes = falcon.cmd.inspect_app:route_main
+    - falcon-inspect-app = falcon.cmd.inspect_app:main
+  skip: True  # [py<35]
 
 requirements:
-    build:
-        - {{ compiler('c') }}
-    host:
-        - python
-        - pip
-        - cython
-    run:
-        - python
+  build:
+    - {{ compiler('c') }}
+  host:
+    - python
+    - pip
+    - cython
+  run:
+    - python
 
 test:
-    imports:
-        - falcon
-        - falcon.cmd
-        - falcon.media
-        - falcon.routing
-        - falcon.testing
-        - falcon.util
-    commands:
-        - falcon-bench -h
-        - falcon-print-routes -h
+  imports:
+    - falcon
+    - falcon.cmd
+    - falcon.media
+    - falcon.routing
+    - falcon.testing
+    - falcon.util
+    - falcon.asgi
+  commands:
+    - falcon-bench -h
+    - falcon-print-routes -h
+    - falcon-inspect-app -h
 
 about:
-    home: http://falconframework.org
-    license: Apache-2.0
-    license_file: LICENSE
-    summary: 'An unladen web framework for building APIs and app backends.'
-    description: |
-        Falcon is a high-performance Python framework for building cloud APIs. It
-        encourages the REST architectural style, and tries to do as little as
-        possible while remaining highly effective.
-    doc_url: http://falcon.readthedocs.io/en/stable/
-    dev_url: https://github.com/falconry/falcon/
+  home: http://falconframework.org
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: An unladen web framework for building APIs and app backends.
+  description: |
+    Falcon is a high-performance Python framework for building cloud APIs. It
+    encourages the REST architectural style, and tries to do as little as
+    possible while remaining highly effective.
+  doc_url: http://falcon.readthedocs.io/en/stable/
+  dev_url: https://github.com/falconry/falcon/
 
 extra:
-    recipe-maintainers:
-        - daf
-        - synapticarbors
-        - carlodri
+  recipe-maintainers:
+    - daf
+    - synapticarbors
+    - carlodri
