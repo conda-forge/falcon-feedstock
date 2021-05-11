@@ -1,5 +1,5 @@
 {% set name = "falcon" %}
-{% set version = "3.0.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8d7c3d52ae4590ddfa0b3d9c75d44ab573340a5e78d72ee687712e757ac53929
+  sha256: c41d84db325881a870e8b7129d5ecfd972fa4323cf77b7119a1d2a21966ee681
 
 build:
   number: 0
@@ -16,7 +16,7 @@ build:
     - falcon-bench = falcon.cmd.bench:main
     - falcon-print-routes = falcon.cmd.inspect_app:route_main
     - falcon-inspect-app = falcon.cmd.inspect_app:main
-  skip: True  # [py<35]
+  skip: true  # [py<35]
 
 requirements:
   build:
