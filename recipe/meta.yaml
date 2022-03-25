@@ -1,5 +1,5 @@
 {% set name = "falcon" %}
-{% set version = "3.0.1" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c41d84db325881a870e8b7129d5ecfd972fa4323cf77b7119a1d2a21966ee681
+  sha256: f2760bd18c16393a6fb5e55f371f67921edb72febe693a82b3c5e82195d087b7
 
 build:
   number: 0
