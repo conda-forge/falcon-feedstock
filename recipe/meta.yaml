@@ -10,7 +10,7 @@ source:
   sha256: f2760bd18c16393a6fb5e55f371f67921edb72febe693a82b3c5e82195d087b7
 
 build:
-  number: 1
+  number: 2
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - falcon-bench = falcon.cmd.bench:main
