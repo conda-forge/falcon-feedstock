@@ -16,7 +16,7 @@ build:
     - falcon-bench = falcon.cmd.bench:main
     - falcon-print-routes = falcon.cmd.inspect_app:route_main
     - falcon-inspect-app = falcon.cmd.inspect_app:main
-  skip: true  # [py<35]
+  skip: true  # [py<37]
 
 requirements:
   build:
