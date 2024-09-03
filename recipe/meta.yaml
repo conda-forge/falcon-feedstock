@@ -29,6 +29,7 @@ requirements:
     - python
     - pip
     - cython
+    - setuptools
   run:
     - python
 
@@ -41,10 +42,13 @@ test:
     - falcon.testing
     - falcon.util
     - falcon.asgi
+  requires:
+    - pip
   commands:
     - falcon-bench -h
     - falcon-print-routes -h
     - falcon-inspect-app -h
+    - pip check
 
 about:
   home: http://falconframework.org
