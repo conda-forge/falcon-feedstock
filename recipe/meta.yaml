@@ -10,7 +10,7 @@ source:
   sha256: 23335dbccd44f29e85ec55f2f35d5a0bc12bd7a509f641ab81f5c64b65626263
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - falcon-bench = falcon.cmd.bench:main
@@ -24,6 +24,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - cython                                 # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - pip
