@@ -1,0 +1,73 @@
+schema_version: 1
+
+context:
+  name: falcon
+  version: 4.1.0
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: dbc3fa642b43e7662f121d0a7b5d7ea42a1a31fb22ae63572c42ee3ecd1f79d0
+
+build:
+  number: 1
+  skip: match(python, "<3.8")
+  script: ${{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+  python:
+    entry_points:
+      - falcon-bench = falcon.cmd.bench:main
+      - falcon-print-routes = falcon.cmd.inspect_app:route_main
+      - falcon-inspect-app = falcon.cmd.inspect_app:main
+
+requirements:
+  build:
+    - if: build_platform != target_platform
+      then: 
+        - python
+        - cross-python_${{ target_platform }}
+        - cython >=3.0.8
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+  host:
+    - python
+    - pip
+    - cython >=3.0.8
+    - setuptools >=61
+  run:
+    - python
+
+tests:
+  - python:
+      imports:
+        - falcon
+        - falcon.cmd
+        - falcon.media
+        - falcon.routing
+        - falcon.testing
+        - falcon.util
+        - falcon.asgi
+      pip_check: true
+  - script:
+      - falcon-bench -h
+      - falcon-inspect-app -h
+
+about:
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: An unladen web framework for building APIs and app backends.
+  description: |
+    Falcon is a high-performance Python framework for building cloud APIs. It
+    encourages the REST architectural style, and tries to do as little as
+    possible while remaining highly effective.
+  homepage: http://falconframework.org
+  repository: https://github.com/falconry/falcon/
+  documentation: http://falcon.readthedocs.io/en/stable/
+
+extra:
+  recipe-maintainers:
+    - daf
+    - synapticarbors
+    - carlodri
