@@ -3,7 +3,7 @@ About falcon-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/falcon-feedstock/blob/main/LICENSE.txt)
 
-Home: http://falconframework.org
+Home: http://falconframework.org/
 
 Package license: Apache-2.0
 
@@ -16,7 +16,6 @@ Documentation: http://falcon.readthedocs.io/en/stable/
 Falcon is a high-performance Python framework for building cloud APIs. It
 encourages the REST architectural style, and tries to do as little as
 possible while remaining highly effective.
-
 
 Current build status
 ====================
