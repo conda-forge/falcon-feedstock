@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: falcon
-  version: 4.1.0
+  version: "4.2.0"
 
 package:
   name: ${{ name }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: dbc3fa642b43e7662f121d0a7b5d7ea42a1a31fb22ae63572c42ee3ecd1f79d0
+  sha256: c13e86e49696d6655411fe09473c34997e49ff45e8cdf7576297b0ca71ceac3d
 
 build:
-  number: 3
+  number: 0
   skip: match(python, "<3.8")
   script: ${{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   python:
